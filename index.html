@@ -104,20 +104,26 @@
 		}
 
 		div#expcc {
-			background-color: rgb(188, 191, 10);
+			background-color: rgb(188, 191, 10, 0.5);
 			border-color: 2px solid yellow;
-			opacity: 0.5;
 			color: white;
 			width: 300px;
 			height: 600px;
+		}
+
+		div#container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
 		}
 	</style>
 </head>
 
 <body>
 	<audio controls id="som">
-		<source src="som.mp3" type="audio/mpeg">
+		<source src="doctorwhotheme.mp3" type="audio/mpeg">
 	</audio>
+	<div id="container">
 	<div class="jogo">
 		<div class="texto">
 			<p>Pegue a TARDIS</p>
@@ -126,17 +132,16 @@
 			<div class="area">
 				<span id="timer">30</span>
 				<div class="bola"></div>
-			</div>
+				
 			<button id="play"><b>PLAY</b></button>
 			<button id="pontos">...</button>
+	</div>
 
 			<div id="expcc">
-				<p>
-					TARDIS ou Cápsula TT é o principal modelo de veículo space-time usado pelos Time Lords. A TARDIS cresce de um coral, em um processo que pode durar vários séculos. A TARDIS do Doctor é um modelo obsoleto, TARDIS 40. “TARDIS” é uma abreviação. Susan, a neta do Doctor conta a Ian Chesterton e Barbara Wright, no episódio An Unearthly Child, que ela “inventou o nome ‘TARDIS’ das iniciais” do nome completo, “Time And Relative Dimension In Space” (Tempo e Dimensão Relativa No Espaço). Enquanto alguns Time Lords, como Castellan Spandrell e Romana I, utilizaram o nome genérico “Cápsula TT”, outros estavam familiarizados com a abreviação de Susan. Alguns seres à margem da sociedade dos Time Lords, como the Sisterhood of Karn, também conheciam a abreviação mesmo não sendo dita pelo Doctor ou seus companions. A TARDIS geralmente move-se através do tempo e espaço, “desaparecendo lá e reaparecendo aqui”, um processo conhecido como “des- e re-materialização”. Isto é controlado pelo circuito de desmaterialização. Pode voar através do espaço como uma nave espacial convencional, mas fazer isso por longos períodos pode danificar a nave, pelo menos no caso da TARDIS do Doctor. Durante a operação, um som característico de moagem e zumbido geralmente era ouvido. River Song, mostrou uma vez como a TARDIS pode materializar-se em silêncio, dizendo para o Doctor que o barulho é  causado por deixar os freios de mão puxados.
-				</p>
-				<p>Informação Completa: <a href="https://universowho.com/tardis/">https://universowho.com/tardis/</a></p>
+				<p>	TARDIS ou Cápsula TT é o principal modelo de veículo space-time usado pelos Time Lords. A TARDIS cresce de um coral, em um processo que pode durar vários séculos. A TARDIS do Doctor é um modelo obsoleto, TARDIS 40. “TARDIS” é uma abreviação. Susan, a neta do Doctor conta a Ian Chesterton e Barbara Wright, no episódio An Unearthly Child, que ela “inventou o nome ‘TARDIS’ das iniciais” do nome completo, “Time And Relative Dimension In Space” (Tempo e Dimensão Relativa No Espaço). Enquanto alguns Time Lords, como Castellan Spandrell e Romana I, utilizaram o nome genérico “Cápsula TT”, outros estavam familiarizados com a abreviação de Susan. Alguns seres à margem da sociedade dos Time Lords, como the Sisterhood of Karn, também conheciam a abreviação mesmo não sendo dita pelo Doctor ou seus companions. A TARDIS geralmente move-se através do tempo e espaço, “desaparecendo lá e reaparecendo aqui”, um processo conhecido como “des- e re-materialização”. Isto é controlado pelo circuito de desmaterialização. Pode voar através do espaço como uma nave espacial convencional, mas fazer isso por longos períodos pode danificar a nave, pelo menos no caso da TARDIS do Doctor. Durante a operação, um som característico de moagem e zumbido geralmente era ouvido. River Song, mostrou uma vez como a TARDIS pode materializar-se em silêncio, dizendo para o Doctor que o barulho é  causado por deixar os freios de mão puxados.</p>
+				<p>Informação Completa: <a href="https://universowho.com/tardis/">https://universowho.com/tardis/" target="_blank"></a></p>
 			</div>
-
+	</div>
 			<script src="jquery-3.3.1.slim.min.js"></script>
 			<script>
 				var pontos = 0;
