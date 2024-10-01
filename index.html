@@ -4,6 +4,7 @@
 <head>
 	<title>Pegue a TARDIS</title>
 	<meta charset="utf-8">
+	<link rel="website icon" type="png" href="img/icon.png">
 	<style>
 		* {
 			margin: 0;
@@ -105,7 +106,8 @@
 
 		div#expcc {
 			background-color: rgb(188, 191, 10, 0.5);
-			border-color: 2px solid yellow;
+			border-color: yellow;
+			border-style: 2px solid;
 			color: white;
 			width: 300px;
 			height: 600px;
@@ -121,7 +123,7 @@
 
 <body>
 	<audio controls id="som">
-		<source src="doctorwhotheme.mp3" type="audio/mpeg">
+		<source src="audio/doctorwhotheme.mp3" type="audio/mpeg">
 	</audio>
 	<div id="container">
 	<div class="jogo">
@@ -132,7 +134,7 @@
 			<div class="area">
 				<span id="timer">30</span>
 				<div class="bola"></div>
-				
+			</div>
 			<button id="play"><b>PLAY</b></button>
 			<button id="pontos">...</button>
 	</div>
