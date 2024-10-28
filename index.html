@@ -51,6 +51,7 @@
             background-size: cover;
             position: relative;
             margin-bottom: 20px;
+            border-radius: 10px;
         }
 
         .bola {
@@ -75,7 +76,22 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 10px 0;
-            border: none;
+            border: solid 1px;
+            cursor: pointer;
+        }
+
+        #play:hover,
+        #pontos:hover,
+        #clique:hover {
+            height: 7.5vh;
+            width: 27vh;
+            background-color: #0a0336;
+            color: white;
+            font-size: 25px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 10px 0;
+            border: solid 1px;
             cursor: pointer;
         }
 
@@ -115,7 +131,7 @@
                 <div class="bola"></div>
             </div>
             <button id="play"><b>PLAY</b></button>
-            <a href="img/vejaestaimagem.png" download target="_blank"><button id="clique">Download Imagem</button></a>
+            <a href="img/vejaestaimagem.png" download target="_blank"><button id="clique"></button></a>
             <button id="pontos">Pontos: 0</button>
         </div>
     </div>
