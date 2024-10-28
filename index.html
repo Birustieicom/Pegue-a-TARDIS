@@ -2,22 +2,22 @@
 <html>
 
 <head>
-	<title>Pegue a TARDIS</title>
-	<meta charset="utf-8">
-	<link rel="website icon" type="png" href="img/icon.png">
-	<style>
-		* {
+    <title>Pegue a TARDIS</title>
+    <meta charset="utf-8">
+    <link rel="website icon" type="png" href="img/icon.png">
+    <style>
+        * {
             margin: 0;
+            padding: 0;
         }
 
         .texto {
             color: yellow;
-            font-family: arial;
+            font-family: Arial, sans-serif;
             font-size: 32px;
             padding-top: 10vh;
-            padding-left: 4vh;
+            text-align: center; /* Centraliza o texto */
             font-weight: 900;
-            font-style: normal;
         }
 
         body {
@@ -29,157 +29,144 @@
             overflow: hidden;
         }
 
+        .jogo {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Alinha os itens no centro */
+        }
+
         .fundo {
             background-color: rgb(23, 6, 124);
-            width: auto;
-            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centraliza os filhos */
+            position: relative; /* Para o posicionamento absoluto dos filhos */
         }
 
         .area {
             width: 50vh;
             height: 50vh;
-            border: 1px solid;
+            border: 1px solid white; /* Define a cor da borda */
             background-image: url(img/psc.png);
-            background-size: 83vh 50vh;
-            background-position: center;
-            background-repeat: repeat;
-            border-color: white;
-            position: relative;
+            background-size: cover; /* Ajusta a imagem de fundo */
+            position: relative; /* Para o posicionamento absoluto da bola */
+            margin-bottom: 20px; /* Espaço abaixo da área */
         }
 
         .bola {
             width: 9vh;
             height: 9.3vh;
             background-image: url(img/tardis.png);
-            background-size: 50.4px 69px;
+            background-size: contain; /* Ajusta a imagem da bola */
             background-repeat: no-repeat;
             display: none;
             position: absolute;
             transition: ease-in-out 0.5s;
         }
 
-        #play {
+        #play,
+        #pontos,
+        #clique {
             height: 5vh;
             width: 18vh;
             background-color: rgb(23, 6, 124);
             color: white;
             font-size: 25px;
-            font-family: arial;
+            font-family: Arial, sans-serif;
             text-align: center;
-            position: absolute;
-            bottom: 10vh;
+            margin: 10px 0; /* Espaçamento entre os botões */
+            border: none; /* Remove a borda padrão */
+            cursor: pointer; /* Muda o cursor ao passar o mouse */
+        }
+
+        #play {
+            position: relative; /* Permite alinhamento em relação ao pai */
         }
 
         #pontos {
-            height: 5vh;
-            width: 25vh;
-            background-color: rgb(23, 6, 124);
-            color: white;
-            font-size: 25px;
-            font-family: Arial;
-            text-align: center;
-            position: absolute;
-            bottom: 10vh;
-            left: 30%;
+            position: relative;
         }
 
         #timer {
             color: white;
             font-size: 20px;
-            position: absolute; /* Mantido como absolute */
-            top: 10px; /* Ajuste para posicionar no topo da área */
-            left: 10px; /* Ajuste para o lado esquerdo */
+            position: absolute;
+            top: 10px;
+            left: 10px;
         }
 
         audio {
             display: none;
         }
-
-        #clique {
-            background-color: rgb(23, 6, 124);
-            color: rgb(23, 6, 124);
-            position: absolute; /* Mantido como absolute */
-            bottom: 10vh; /* Ajuste para posicionar acima da área */
-        }
-
-        .jogo {
-            position: relative; /* Para centralizar corretamente */
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Alinha os itens no centro */
-        }
-	</style>
+    </style>
 </head>
 
 <body>
-	<audio controls id="som">
-		<source src="audio/doctorwhotheme.mp3" type="audio/mpeg">
-	</audio>
-	<div class="jogo">
-		<div class="texto">
-			<p>Pegue a TARDIS</p>
-		</div>
-		<div class="fundo">
-			<div class="area">
-				<span id="timer">30</span>
-				<div class="bola"></div>
-			</div>
-			<button id="play"><b>PLAY</b></button>
-			<a href="img/vejaestaimagem.png" download target="_blank"><button id="clique"></button></a>
-			<button id="pontos">...</button>
-			
-	</div>
-			<script src="jquery-3.3.1.slim.min.js"></script>
-			<script>
-				var pontos = 0;
-				var tempo = 1000;
-				var timer = 30;
-				var som = new Audio('som.mp3');
-				var play;
-				function end() {
+    <audio controls id="som">
+        <source src="audio/doctorwhotheme.mp3" type="audio/mpeg">
+    </audio>
+    <div class="jogo">
+        <div class="texto">
+            <p>Pegue a TARDIS</p>
+        </div>
+        <div class="fundo">
+            <div class="area">
+                <span id="timer">30</span>
+                <div class="bola"></div>
+            </div>
+            <button id="play"><b>PLAY</b></button>
+            <a href="img/vejaestaimagem.png" download target="_blank"><button id="clique">Download Imagem</button></a>
+            <button id="pontos">Pontos: 0</button>
+        </div>
+    </div>
+    <script src="jquery-3.3.1.slim.min.js"></script>
+    <script>
+        var pontos = 0;
+        var tempo = 1000;
+        var timer = 30;
+        var som = new Audio('som.mp3');
+        var play;
 
-					clearInterval(play);
-					timer = 30;
-					pontos = 0;
-					tempo = 1000;
-					$('#timer').html(timer);
+        function end() {
+            clearInterval(play);
+            timer = 30;
+            pontos = 0;
+            tempo = 1000;
+            $('#timer').html(timer);
+        }
 
-				}
-				function go() {
-					play = setInterval(function () {
-						console.log('fff');
-						if (timer != 0) {
-							var largura = parseInt($('.area').css('width'));
-							var altura = parseInt($('.area').css('height'));
-							var l = random = Math.ceil(Math.random() * (largura - 50));
-							var t = random = Math.floor(Math.random() * (altura - 50));
-							$('.bola').css('margin-left', l + 'px');
-							$('.bola').css('margin-top', t + 'px');
-							//contador de tempo
-							timer--;
-							$('#timer').html(timer);
-						} else {
-							//end();
-							$('.bola').hide();
-							alert("Você fez: " + pontos + " pontos");
-							end();
-						}
-					}, tempo);
-				}
-				$(document).on('click', '#play', function () {
-					som.play();
-					$('.bola').show();
-					go();
-				});
-				$(document).on('click', '.bola', function () {
-					pontos++;
-					tempo -= 20;
-					$('#pontos').html('<b>Pontos:</b> ' + pontos);
+        function go() {
+            play = setInterval(function () {
+                if (timer !== 0) {
+                    var largura = parseInt($('.area').css('width'));
+                    var altura = parseInt($('.area').css('height'));
+                    var l = Math.ceil(Math.random() * (largura - 50));
+                    var t = Math.floor(Math.random() * (altura - 50));
+                    $('.bola').css('margin-left', l + 'px');
+                    $('.bola').css('margin-top', t + 'px');
+                    // Contador de tempo
+                    timer--;
+                    $('#timer').html(timer);
+                } else {
+                    $('.bola').hide();
+                    alert("Você fez: " + pontos + " pontos");
+                    end();
+                }
+            }, tempo);
+        }
 
-				});
+        $(document).on('click', '#play', function () {
+            som.play();
+            $('.bola').show();
+            go();
+        });
 
-			</script>
-		</div>
+        $(document).on('click', '.bola', function () {
+            pontos++;
+            tempo -= 20;
+            $('#pontos').html('Pontos: ' + pontos);
+        });
+    </script>
 </body>
 
 </html>
