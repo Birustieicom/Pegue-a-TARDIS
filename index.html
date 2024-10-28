@@ -31,6 +31,18 @@
 
         .jogo {
             display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .botoes {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .game {
+            display: flex;
             flex-direction: column;
             align-items: center;
         }
@@ -136,6 +148,7 @@
         <source src="audio/doctorwhotheme.mp3" type="audio/mpeg">
     </audio>
     <div class="jogo">
+        <div class="game">
         <div class="texto">
             <p>Pegue a TARDIS</p>
             <p>Houssein e Jullya</p>
@@ -145,9 +158,12 @@
                 <span id="timer">30</span>
                 <div class="bola"></div>
             </div>
+        </div>
+        <div class="botoes">
             <button id="play"><b>PLAY</b></button>
             <button id="pontos">Pontos: 0</button>
             <a href="img/vejaestaimagem.png" download target="_blank"><button id="clique">Não Clique</button></a>
+        </div>
         </div>
     </div>
     <script src="jquery-3.3.1.slim.min.js"></script>
